@@ -1,3 +1,5 @@
+import uuid from 'uuid';
+
 const defaultExpenses = [];
 
 export default (state = defaultExpenses, action) => {
@@ -5,7 +7,7 @@ export default (state = defaultExpenses, action) => {
       case 'ADD_EXPENSE':
         return [
           ...state,
-          action.payload
+          action.payload,
         ];
       case 'REMOVE_EXPENSE':
         return state.filter(item => item.id !== action.payload);

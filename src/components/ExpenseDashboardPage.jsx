@@ -1,6 +1,8 @@
 import React from 'react';
 import { addExpense, removeExpense } from '../actions/expenses.js';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import ExpenseListItem from './ExpenseListItem';
 
 class ExpenseDashboardPage extends React.Component {
   constructor(props) {
@@ -17,13 +19,8 @@ class ExpenseDashboardPage extends React.Component {
     return (
       <div>
         {this.props.expenses.map((item, key) => {
-          console.log(this.props);
           return (
-            <div key={key}>
-              <h1>{item.name}</h1>
-              <p>{item.description}</p>
-              <button onClick={() => this.props.dispatch(removeExpense(item.id))}>Remove</button>
-            </div>
+            <ExpenseListItem item={item} key={key}/>
           )
         })}
       </div>

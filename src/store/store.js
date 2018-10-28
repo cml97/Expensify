@@ -5,7 +5,10 @@ export default () => {
   const rootReducer = combineReducers({
     expenses: reducers.expenses,
     filters: reducers.filters
-  });
-  const store = createStore(rootReducer);
+  })
+  const store = createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
   return store;
 }
