@@ -2,11 +2,11 @@ const getFilteredExpenses = (expenses, filter) => {
   if (expenses.length > 0) {
     return expenses.filter((item) => {
 
-      // let startDateMatch = item.createdAt >= filter.startDate;
-      // let endDateMatch = item.createdAt <= filter.endDate;
+      let startDateMatch = item.createdAt >= filter.startDate;
+      let endDateMatch = item.createdAt <= filter.endDate;
       let textMatch = item.description.toLowerCase().includes(filter.text.toLowerCase());
 
-      return textMatch;
+      return startDateMatch && endDateMatch && textMatch;
 
     }).sort((a, b) => {
       if (filter.sortBy === 'date') {
