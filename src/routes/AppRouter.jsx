@@ -12,6 +12,7 @@ Header
 } from '../components';
 
 import configureStore from '../store/store.js';
+import '../firebase/firebase';
 
 const store = configureStore();
 
