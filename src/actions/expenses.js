@@ -1,4 +1,13 @@
+import database from '../firebase/firebase';
 
+export const startAddExpense = (expense = { }) => {
+  return dispatch => {
+    database.ref("expenses").push(expense).then((ref) => {
+      console.log("Expense added")
+      dispatch(addExpense({ id: ref.key, ...expense}))
+    }).catch(err => console.log("Error here", err))
+  }
+}
 export const addExpense = (expense) => {
   return {
     type: 'ADD_EXPENSE',
