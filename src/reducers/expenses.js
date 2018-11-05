@@ -19,6 +19,10 @@ export default (state = defaultExpenses, action) => {
             return item;
           }
         })
+      case 'GET_EXPENSES':
+        return [
+          ...action.payload
+        ]
       default:
         return state;
     }

@@ -7,10 +7,9 @@ class ExpenseListItem extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  
   render() {
     let { item } = this.props;
-    console.log(this.props);
     return (
       <div>
         <Link to={`/edit/${item.id}`}><h1>{item.description}</h1></Link>

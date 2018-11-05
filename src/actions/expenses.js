@@ -2,10 +2,11 @@ import database from '../firebase/firebase';
 
 export const startAddExpense = (expense = { }) => {
   return dispatch => {
-    database.ref("expenses").push(expense).then((ref) => {
-      console.log("Expense added")
-      dispatch(addExpense({ id: ref.key, ...expense}))
-    }).catch(err => console.log("Error here", err))
+    database.ref("expenses").push(expense)
+      .then((ref) => {
+        dispatch(addExpense({ id: ref.key, ...expense}))
+      })
+      .catch(err => console.log("Error here", err))
   }
 }
 export const addExpense = (expense) => {
@@ -15,6 +16,18 @@ export const addExpense = (expense) => {
   }
 };
 
+export const fetchAllExpenses = () => {
+  return dispatch => {
+    return database.ref("expenses").once('value').then((snapshot) => {
+      const expenses = [];
+      snapshot.forEach((expense) => {
+        expenses.push(expense.val());
+      });
+      dispatch(getExpenses(expenses));
+    })
+    
+  }
+}
 export const removeExpense = (id) => {
   return {
     type: 'REMOVE_EXPENSE',
@@ -22,9 +35,10 @@ export const removeExpense = (id) => {
   }
 };
 
-export const getExpenses = () => {
+export const getExpenses = (expenses) => {
   return {
-    type: 'GET_EXPENSES'
+    type: 'GET_EXPENSES',
+    payload: expenses
   }
 }
 

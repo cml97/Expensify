@@ -1,5 +1,5 @@
 import React from 'react';
-import { addExpense, removeExpense } from '../actions/expenses.js';
+import { addExpense, removeExpense, fetchAllExpenses, getExpense } from '../actions/expenses.js';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ExpenseListItem from './ExpenseListItem';
@@ -9,11 +9,12 @@ class ExpenseDashboardPage extends React.Component {
     super(props);
   }
   componentWillMount() {
-
+    this.props.dispatch(fetchAllExpenses(this.props.expenses));
+    console.log("Expenses is ", this.props.expenses);
   }
 
   componentWillReceiveProps(nextProps) {
-
+    
   }
   render() {
     return (
