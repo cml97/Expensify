@@ -1,15 +1,17 @@
 import React from 'react';
+import { addExpense, removeExpense, fetchAllExpenses, getExpense } from '../actions/expenses.js';
 import { connect } from 'react-redux';
 import ExpenseListItem from './ExpenseListItem';
 
 class ExpenseDashboardPage extends React.Component {
   
   componentWillMount() {
-
+    this.props.dispatch(fetchAllExpenses(this.props.expenses));
+    console.log("Expenses is ", this.props.expenses);
   }
 
   componentWillReceiveProps(nextProps) {
-
+    
   }
   render() {
     return (
