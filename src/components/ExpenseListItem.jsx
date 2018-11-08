@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class ExpenseListItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
 
   render() {
     let { item } = this.props;

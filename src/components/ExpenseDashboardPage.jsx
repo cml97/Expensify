@@ -1,13 +1,9 @@
 import React from 'react';
-import { addExpense, removeExpense } from '../actions/expenses.js';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import ExpenseListItem from './ExpenseListItem';
 
 class ExpenseDashboardPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
   componentWillMount() {
 
   }

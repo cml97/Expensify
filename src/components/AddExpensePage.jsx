@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import { addExpense } from '../actions/expenses';
 
 class AddExpensePage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
   onSubmit = (form) => {
     this.props.dispatch(addExpense(form));
   }

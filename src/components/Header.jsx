@@ -1,13 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { addExpense } from '../actions/expenses.js';
-import { connect } from 'react-redux';
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+ 
   render() {
     return (
       <div>

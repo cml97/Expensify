@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import AppRouter from './routes/AppRouter';
-import configureStore from './store/store.js';
 
 
 
