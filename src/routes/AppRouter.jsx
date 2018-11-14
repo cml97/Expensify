@@ -13,6 +13,7 @@ Header
 
 import configureStore from '../store/store.js';
 import '../firebase/firebase';
+import Login from '../components/auth/Login';
 
 const store = configureStore();
 
@@ -22,9 +23,9 @@ class AppRouter extends React.Component {
       <Provider store={store}>
       <BrowserRouter>
         <div>
-          <Header />
           <Switch>
-            <Route path="/" component={ExpenseDashboardPage} exact={true} />
+            <Route path="/" component={Login} exact={true} />
+            <Route path="/dashboard" component={ExpenseDashboardPage} />
             <Route path="/create" component={AddExpensePage} />
             <Route path="/edit/:id" component={EditExpensePage} />
             <Route path="/help" component={HelpPage} />

@@ -38,6 +38,13 @@ export const startRemoveExpense = (id) => {
     });
   }
 }
+
+export const startEditExpense = (id, model) => {
+  return dispatch => {
+    return database.ref(`expenses/${id}`).update(model).then(() => dispatch(editExpense(id, model)));
+  }
+}
+
 export const removeExpense = (id) => {
   return {
     type: 'REMOVE_EXPENSE',
