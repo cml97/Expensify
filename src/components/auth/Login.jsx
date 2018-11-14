@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { startLogin } from '../../actions/auth';
 
-class Login extends React.Component {
+class Login extends Component {
     constructor(props) {
         super(props);
 
@@ -24,15 +25,15 @@ class Login extends React.Component {
             <form onSubmit={(form) => this.onSubmit(form)}>
                 <input name="username" placeholder="Username" required onChange={(e) => this.updateData('username', e.target.value)}/>
                 <input name="password" placeholder="Password" required onChange={(e) => this.updateData('password', e.target.value)}/>
-                <button>Login</button>
+                <button onClick={() => this.props.startLogin()}>Login</button>
             </form>
         );
     }
 }
 
-const mapStateToProps = () => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        
+        startLogin: () => dispatch(startLogin())
     }
 }
-export default connect(mapStateToProps)(Login);
+export default connect(undefined, mapDispatchToProps)(Login);
