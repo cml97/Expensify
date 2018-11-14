@@ -10,7 +10,6 @@ class ExpenseForm extends React.Component {
 
     this.state = {
       form: {
-        id: props.expense ? props.expense.id : 0,
         description: props.expense ? props.expense.description : '',
         note: props.expense ? props.expense.note : '',
         amount: props.expense ? props.expense.amount : 0,
@@ -60,7 +59,6 @@ class ExpenseForm extends React.Component {
     return (
     <div>
       <form onSubmit={(e) => this.handleSubmit(e)}>
-        <input type="number" placeholder="Description" autoFocus value={form.id} onChange={(e) => this.updateData('id', e.target.value )}/>
         <input type="text" placeholder="Description" value={form.description} onChange={(e) => this.updateData('description', e.target.value )}/>
         <input type="number" placeholder="Amount" value={form.amount} onChange={(e) => this.updateData('amount', e.target.value)}/>
         <SingleDatePicker

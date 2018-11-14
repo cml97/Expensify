@@ -9,6 +9,7 @@ export const startAddExpense = (expense = { }) => {
       .catch(err => console.log("Error here", err))
   }
 }
+
 export const addExpense = (expense) => {
   return {
     type: 'ADD_EXPENSE',
@@ -21,11 +22,20 @@ export const fetchAllExpenses = () => {
     return database.ref("expenses").once('value').then((snapshot) => {
       const expenses = [];
       snapshot.forEach((expense) => {
-        expenses.push(expense.val());
+        expenses.push({
+          id: expense.key,
+          ...expense.val()
+        });
       });
       dispatch(getExpenses(expenses));
     })
-    
+  }
+}
+export const startRemoveExpense = (id) => {
+  return dispatch => {
+    return database.ref(`expenses/${id}`).remove().then(() => {
+      dispatch(removeExpense(id));
+    });
   }
 }
 export const removeExpense = (id) => {

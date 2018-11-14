@@ -1,5 +1,5 @@
 import React from 'react';
-import { removeExpense } from '../actions/expenses';
+import { startRemoveExpense } from '../actions/expenses';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -14,7 +14,7 @@ class ExpenseListItem extends React.Component {
         <p>{item.note}</p>
         <p>{item.amount} - {item.createdAt}</p>
         <button
-          onClick={() => this.props.dispatch(removeExpense(item.id))}
+          onClick={() => this.props.dispatch(startRemoveExpense(item.id))}
         >
           Remove
         </button>
