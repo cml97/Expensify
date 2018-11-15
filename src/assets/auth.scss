@@ -1,0 +1,15 @@
+.box-layout {
+  background-image: url('/public/images/bg.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  border-radius: 3px;
+  text-align: center;
+  width: 25rem;
+  padding: 1.2rem;
+}
