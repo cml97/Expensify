@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import { startEditExpense } from '../actions/expenses';
 
 class EditExpensePage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   onSubmit = (form) => {
     this.props.dispatch(startEditExpense(this.props.match.params.id, form));

@@ -1,5 +1,5 @@
 import React from 'react';
-import { addExpense, removeExpense, fetchAllExpenses, getExpense } from '../actions/expenses.js';
+import { fetchAllExpenses } from '../actions/expenses.js';
 import { connect } from 'react-redux';
 import ExpenseListItem from './ExpenseListItem';
 import Header from './Header';
@@ -17,7 +17,7 @@ class ExpenseDashboardPage extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     let total = 0;
-    nextProps.expenses.map((item) => {
+    nextProps.expenses.forEach((item) => {
       total += Number(item.amount)
     })
     this.setState({
