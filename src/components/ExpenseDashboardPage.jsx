@@ -17,6 +17,7 @@ class ExpenseDashboardPage extends React.Component {
     this.props.dispatch(fetchAllExpenses(this.props.expenses));
   }
   componentWillReceiveProps(nextProps) {
+    this.props.dispatch(fetchAllExpenses(this.props.expenses));
     let total = 0;
     nextProps.expenses.forEach((item) => {
       total += Number(item.amount)
