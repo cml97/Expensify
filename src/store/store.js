@@ -7,7 +7,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export default () => {
   const rootReducer = combineReducers({
     expenses: reducers.expenses,
-    filters: reducers.filters
+    filters: reducers.filters,
+    auth: reducers.auth
   })
   const store = createStore(
     rootReducer,

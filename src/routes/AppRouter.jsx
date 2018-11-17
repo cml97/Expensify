@@ -1,7 +1,8 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
+import '../firebase/firebase';
+import Login from '../components/auth/Login';
 
 import {
   ExpenseDashboardPage,
@@ -12,17 +13,11 @@ import {
   Header,
 } from '../components';
 
-import configureStore from '../store/store.js';
-import '../firebase/firebase';
-import Login from '../components/auth/Login';
-
-const store = configureStore();
 export const history = createHistory();
 
 class AppRouter extends React.Component {
   render() {
     return (
-      <Provider store={store}>
         <Router history={history}>
           <div id="root">
             <Header />
@@ -36,7 +31,6 @@ class AppRouter extends React.Component {
             </Switch>
           </div>
         </Router>
-      </Provider>
     );
   }
 }

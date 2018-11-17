@@ -1,8 +1,9 @@
 import database from '../firebase/firebase';
 
 export const startAddExpense = (expense = { }) => {
-  return dispatch => {
-    database.ref("expenses").push(expense)
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    database.ref(`${uid}/expenses`).push(expense)
       .then((ref) => {
         dispatch(addExpense({ id: ref.key, ...expense}))
       })
@@ -18,8 +19,10 @@ export const addExpense = (expense) => {
 };
 
 export const fetchAllExpenses = () => {
-  return dispatch => {
-    return database.ref("expenses").once('value').then((snapshot) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
+    return database.ref(`${uid}/expenses`).once('value').then((snapshot) => {
       const expenses = [];
       snapshot.forEach((expense) => {
         expenses.push({
@@ -32,16 +35,18 @@ export const fetchAllExpenses = () => {
   }
 }
 export const startRemoveExpense = (id) => {
-  return dispatch => {
-    return database.ref(`expenses/${id}`).remove().then(() => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`${uid}/expenses/${id}`).remove().then(() => {
       dispatch(removeExpense(id));
     });
   }
 }
 
 export const startEditExpense = (id, model) => {
-  return dispatch => {
-    return database.ref(`expenses/${id}`).update(model).then(() => dispatch(editExpense(id, model)));
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`${uid}/expenses/${id}`).update(model).then(() => dispatch(editExpense(id, model)));
   }
 }
 
