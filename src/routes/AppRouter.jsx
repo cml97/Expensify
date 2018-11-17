@@ -9,6 +9,7 @@ import {
   EditExpensePage,
   HelpPage,
   NotFoundPage,
+  Header,
 } from '../components';
 
 import configureStore from '../store/store.js';
@@ -23,7 +24,8 @@ class AppRouter extends React.Component {
     return (
       <Provider store={store}>
         <Router history={history}>
-          <div>
+          <div id="root">
+            <Header />
             <Switch>
               <Route path="/" component={Login} exact={true} />
               <Route path="/dashboard" component={ExpenseDashboardPage} />

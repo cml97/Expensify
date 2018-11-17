@@ -8,15 +8,16 @@ class ExpenseListItem extends React.Component {
   render() {
     let { item } = this.props;
     return (
-      <div>
-        <Link to={`/edit/${item.id}`}><h1>{item.description}</h1></Link>
-        <p>{item.note}</p>
-        <p>{item.amount} - {moment(item.createdAt).format('DD MM YYYY')}</p>
-        <button
-          onClick={() => this.props.dispatch(startRemoveExpense(item.id))}
-        >
-          Remove
-        </button>
+      <div className="expense-item">
+        <div>
+          <Link className="link-nodec" to={`/edit/${item.id}`}>
+            <h2>{item.description}</h2>
+          </Link>
+          <p>{moment(item.createdAt).format('MMMM Do, YYYY')}</p>
+        </div>
+        <div>
+          <h3>{item.amount} $</h3>
+        </div>
       </div>
     );
   }

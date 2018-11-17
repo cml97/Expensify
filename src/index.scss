@@ -1,2 +1,21 @@
+@import './assets/globals/mainpage.scss';
 @import './assets/auth.scss';
 @import './assets/formelements.scss';
+@import './assets/dashboard/header.scss';
+@import './assets/dashboard/info.scss';
+@import './assets/dashboard/tables.scss';
+@import './assets/dashboard/item.scss';
+@import './assets/partials.scss';
+
+#root {
+  overflow: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  h1 {
+    margin: 0;
+  }
+}

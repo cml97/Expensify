@@ -1,7 +1,67 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+
+  > * {
+    margin-bottom: 10px;
+  }
+}
+
 .button-google {
   color: white;
   background-color: #1c88bf;
   font-size: 1.2rem;
   font-weight: 300;
-  padding: 1.2rem;
+  padding: 13px;
+  width: 150px;
+}
+
+.button-text {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 16px;
+}
+
+.input {
+  height: 40px;
+  font-size: 20px;
+  padding: 10px;
+  
+  &.xlarge {
+    height: 100px;
+  }
+  &::placeholder {
+    color: #a1a1a1;
+  }
+}
+.SingleDatePickerInput {
+  height: 60px;
+
+  .DateInput {
+    height: 100%;
+
+    .DateInput_input {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      border: none;
+      padding-left: 10px;
+    }
+  }
+  .DateInput_input__focused {
+    height: 59px !important;
+    border-bottom: 2px solid #008489 !important;
+  }
+}
+.SingleDatePickerInput__withBorder {
+  width: 100%;
+}
+
+.SingleDatePicker_picker {
+  top: 71px !important;
+}
+svg[role="presentation"] {
+  top: 60px !important;
 }

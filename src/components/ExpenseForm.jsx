@@ -12,8 +12,8 @@ class ExpenseForm extends React.Component {
       form: {
         description: props.expense ? props.expense.description : '',
         note: props.expense ? props.expense.note : '',
-        amount: props.expense ? props.expense.amount : 0,
-        createdAt: props.expense ? moment(props.expense.createdAt): moment(),
+        amount: props.expense,
+        createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
       },
       calendarFocused: false,
       error: ''
@@ -44,7 +44,7 @@ class ExpenseForm extends React.Component {
       this.setState({
         error: ''
       })
-      this.props.onSubmit({...form, createdAt: form.createdAt.valueOf()});
+      this.props.onSubmit({ ...form, createdAt: form.createdAt.valueOf() });
 
     }
     else {
@@ -57,23 +57,23 @@ class ExpenseForm extends React.Component {
     let { form, calendarFocused } = this.state;
 
     return (
-    <div>
-      <form onSubmit={(e) => this.handleSubmit(e)}>
-        <input type="text" placeholder="Description" value={form.description} onChange={(e) => this.updateData('description', e.target.value )}/>
-        <input type="number" placeholder="Amount" value={form.amount} onChange={(e) => this.updateData('amount', e.target.value)}/>
-        <SingleDatePicker
-           date={form.createdAt}
-           onDateChange={(createdAt) => this.updateData('createdAt',createdAt)}
-           focused={calendarFocused}
-           onFocusChange={({focused}) => this.onFocusChange({focused})}
-           numberOfMonths={1}
-           isOutsideRange={() => false}
-        />
-        <textarea placeholder="Add a note for your expense" value={form.note} onChange={(e) => this.updateData('note', e.target.value)}></textarea>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  )
+      <div>
+        <form className="form" onSubmit={(e) => this.handleSubmit(e)}>
+          <input className="input large" type="text" placeholder="Description" value={form.description} onChange={(e) => this.updateData('description', e.target.value)} />
+          <input className="input large" type="number" placeholder="Amount" value={form.amount} onChange={(e) => this.updateData('amount', e.target.value)} />
+          <SingleDatePicker
+            date={form.createdAt}
+            onDateChange={(createdAt) => this.updateData('createdAt', createdAt)}
+            focused={calendarFocused}
+            onFocusChange={({ focused }) => this.onFocusChange({ focused })}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
+          />
+          <textarea className="input xlarge" placeholder="Add a note for your expense" value={form.note} onChange={(e) => this.updateData('note', e.target.value)}></textarea>
+          <button className="button-google" type="submit">Submit</button>
+        </form>
+      </div>
+    )
   }
 }
 export default ExpenseForm;

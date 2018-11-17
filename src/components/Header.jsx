@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
+import { NavLink } from 'react-router-dom';
 
 class Header extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Expensify</h1>
-        <Link to="/">Dashboard</Link>
-        <Link to="/create">Create Expense</Link>
+      <div className="header">
+        <NavLink to="/dashboard" className="header-link">
+          <h1>Expensify</h1>
+        </NavLink>
+        
         <Link to="/help">Help</Link>
-        <button onClick={this.props.logOut}>Log Out</button>
+        <button className="button-text" onClick={this.props.logOut}>Log Out</button>
       </div>
     );
   }
